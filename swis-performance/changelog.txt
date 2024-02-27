@@ -1,0 +1,169 @@
+= 1.7.0 =
+* added: manual Clear Site Cache action purges server-based caches: WP object cache, WP Engine, SiteGround, Pagely, LiteSpeed, and SpinupWP
+* changed: add data-no-defer to critical css control JS
+* changed: critical CSS for individual pages can be removed by clearing existing CSS and saving
+* changed: Easy Digital Downloads cookies added to default cache exclusions
+* fixed: stdClass "not found" in EDD updater file in edge cases
+* fixed: HTML parsers break Bricks front-end editor
+
+= 1.6.1 =
+* updated: plugin updater class with ability for auto-updates
+* changed: page cache can be enabled on any host in conjunction with server-based page caching
+* fixed: get_plugin_data function undefined in some cases
+* fixed: .htaccess admin notice shown on servers where it does not exist (and is not needed)
+* fixed: cache engine debug function throws error in some edge cases
+* fixed: PHP empty needle error in caching function
+
+= 1.6.0 =
+* added: CriticalCSS.com integration to generate critical CSS automatically and avoid FOUC with deferred CSS
+* added: cache size and clear cache button on settings page
+* changed: cache preload status auto-refreshes when running in background
+* changed: cache overrides take effect without toggling cache setting
+* fixed: page cache upgrade routine installs advanced-cache.php incorrectly
+* fixed: undefined constant notice during page cache upgrade
+* fixed: undefined variable when getting cache size
+* fixed: cache exclusions not saving properly
+* fixed: front-end checks not detecting feeds, embeds, and previews
+
+= 1.5.4 =
+* added: configure content directory with SWIS_CONTENT_DIR
+* changed: make all permissions checks filterable
+* fixed: removal of dashicons CSS breaks Ninja Forms
+* fixed: unaltered CSS was pre-loaded twice
+* fixed: fatal error for invalid class when mobile caching enabled
+* fixed: JS errors when WP admin bar is hidden
+* fixed: spaces in Slim rules prevent URL matches
+* fixed: conflicts with Thrive Editor
+
+= 1.5.3 =
+* fixed: newer versions of Avada/Fusion builder not detected properly
+* fixed: some functions of Customizer not working with deferred JS
+
+= 1.5.2 =
+* fixed: CSS defer double-parses the fallback noscript tags
+* fixed: cache preload triggered by cache clear during plugin deactivation
+* fixed: HTML parsing code incorrectly handles JSON markup
+
+= 1.5.1 =
+* added: preload CSS for Avada, Brizy Builder, Gutenberg plugin, and TagDiv Composer
+* fixed: JS Minify breaks when processing Brizy Builder JS
+* fixed: JS Minify breaks Kali Forms
+* fixed: empty wp-content folder (/) causes rewriting of page links
+* fixed: CDN rewriter throws empty needle warning for strpos
+* fixed: CDN rewriter and WebP cache variant incorrectly handle JSON responses
+* fixed: jQuery not deferred due to updated markup in core WP
+* fixed: unable to remove last rule from Eliminate Unused JS/CSS
+
+= 1.5.0 =
+* added: preload CSS for Gutenberg, Oxygen, Elementor, GenerateBlocks and Beaver Builder when Optimize CSS Loading is enabled
+* added: WebP cache variant supports relative image URLs
+* fixed: WebP cache variant setting not saved to disk settings file
+* fixed: WebP cache variant removes background images if .webp file does not exist
+* fixed: Optimize CSS loading adds extra markup for preloaded theme files
+
+= 1.4.0 =
+* added: defer and minify functions now support JS/CSS resources added without the WP enqueue system
+* added: font optimizer supports CDN domain in CSS URLs
+* fixed: font optimizer uses file_get_contents() which is blocked on some servers
+* fixed: JS injected incorrectly into certain Oxygen Builder components
+* fixed: undefined constant from EWWW IO was triggering a warning
+* fixed: Optimize CSS loading skipped stylesheets with empty media attributes
+* fixed: cache engine bails if doctype declaration is slightly non-standard
+
+= 1.3.0 =
+* added: mobile caching available via SWIS_CACHE_MOBILE override, use only if you deliver unique pages to mobile devices
+* changed: cache clearing for plugin/theme updates is more efficient
+* changed: cache engine begins buffering earlier for improved compatibility with other plugins
+* fixed: entire network cache cleared if main site in sub-dir install is cleared
+* fixed: cache requirements notice shows to all users
+* fixed: cache clearing for WooCommerce stock updates
+* fixed: cache clearing redirect fails if Referer header is missing/disabled, results in blank screen
+* fixed: cache preloading fails if 301/302 redirect found
+* fixed: CDN parser cannot handle img elements with empty src attributes
+* fixed: CDN parser regex to detect SVG images in use elements caused excessive backtracking
+* fixed: DNS prefetch/preconnect produces invalid HTML when URL does not contain a path
+* update: cache clearing behavior for comments reduces unnecessary cache clearing
+
+= 1.2.1 =
+* added: embedded help and improved documentation for all settings
+* changed: failure to insert gzip/cache-control rules in .htaccess failed silently, now displays an admin notice
+* fixed: display of Yoast admin bar resources on JS/CSS panel
+* fixed: deferring a11y and i18n dependencies causes JS errors
+* fixed: cache not cleared after enabling WebP Variant
+
+= 1.2.0 =
+* added: manage JS/CSS unloads via front-end menu/console
+* changed: JS/CSS unload rules use strict matching unless wildcards (*) are used
+* changed: new UI to manage JS/CSS unloads
+* changed: admin bar items consolidated under SWIS menu
+* fixed: prefetch and preconnect hints added incorrectly if SVG title tags found in HTML
+
+= 1.1.1 =
+* fixed: conditional tag functions called before query is setup
+* fixed: WP-CLI error from debug functions
+
+= 1.1.0 =
+* added: Cache Preload to prime the page cache
+* added: minify additional CSS from theme customizer
+
+= 1.0.5 =
+* changed: Critical CSS inlined earlier, and removed after styles load to avoid conflicts
+* fixed: Google Fonts URLs with spaces not handled properly
+* fixed: Cache clearing when new comment is submitted throws error
+
+= 1.0.4 =
+* fixed: Beaver Builder cache clearing throws warnings
+* fixed: CDN exclusions not saving properly
+
+= 1.0.3 =
+* fixed: JS Minify breaks Beaver Builder scripts
+* fixed: license validation causes mismatched key
+* removed: lazy load, as we already have it in EWWW IO & Easy IO
+
+= 1.0.2 =
+* added: CDN rewriting for Ultimate Member AJAX requests
+* fixed: jQuery safe mode not working with WP 5.6
+
+= 1.0.1 =
+* added: Lazy Load for external CSS and separate style blocks (div elements only for now)
+* changed: better support for WP Offload Media with WebP cache variant
+* changed: CDN rewriter has better detection for custom wp-includes and wp-content folders
+* fixed: cache engine not finding settings file
+* fixed: WP_CACHE not defined when other plugins leave it defined as false after deactivation
+
+= 1.0.0 =
+* added: docs for finding unused CSS/JS and critical CSS added to Help Beacon
+* change: CDN rewriter has better https detection
+
+= 0.9.5 =
+* added: Cache module has ability to create a WebP version of your pages for supported browsers
+* changed: Cache module allows query strings, with a default set of exclusions to bypass caching
+* changed: Cache module has smarter cache clearing when a post/page (or any custom post type) is published/updated
+* changed: improved detection of existing prefetch/preconnect hints
+* fixed: cache clearing by URL for sub-directory installations
+
+= 0.9.4 =
+* changed: CDN rewriter hooks into more image URL functions
+* changed: browser-native lazy loading attributes no longer added by SWIS to prevent theme/plugin conflicts
+* changed: license status refreshes automatically when expiration date is reached
+* fixed: DNS prefetch function causes warning when using strpos on an array
+
+= 0.9.3 =
+* fixed: JS/CSS exclusion code running in page builder mode
+* fixed: Lazy Loader parsing (and breaking) JSON responses
+* fixed: Divi style.css broken by CSS Minify
+* fixed: CDN rewriter pre-empts Easy IO rewriting
+
+= 0.9.2 =
+* added: ability to add domains for DNS prefetch and preconnect hints
+* changed: prevent DNS prefetch for fonts.googleapis.com when font optimization is enabled
+* changed: use better escaping function for Critical CSS setting
+* fixed: license activation error messages not displayed
+* fixed: lazy loader not detecting Easy IO capability
+
+= 0.9.1 =
+* changed: added '.min' suffix to minified JS/CSS files to avoid conflicts with other minifiers.
+* fixed: error with Lazy Load and AMP
+
+= 0.9.0 =
+* first public release
